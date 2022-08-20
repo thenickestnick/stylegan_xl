@@ -13,7 +13,7 @@ fi
 image_dir_path=./data/few-shot-images/pokemon
 processed_archive_path=./data/processed/pokemon256.zip
 
-if test -f "processed_archive_path"; then
+if test -f "$processed_archive_path"; then
     echo "Processed dataset already found at $processed_archive_path, skipping processing."
 else
     echo "Processing dataset into archive $processed_archive_path"
