@@ -25,8 +25,8 @@ else
 fi
 
 python train.py \
---data=$image_dir_path \
---outdir=$processed_archive_path \
+--data=$processed_archive_path \
+--outdir=./training-runs/pokemon256/ \
 --cfg=stylegan3-t \
 --gpus=1 \
 --batch=8 \
