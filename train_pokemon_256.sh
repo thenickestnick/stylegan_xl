@@ -34,5 +34,5 @@ python train.py \
 --mirror=True \
 --snap=10 \
 --batch-gpu=8 \
---kimg=10000 \
+--kimg=100 \
 --syn_layers=10
