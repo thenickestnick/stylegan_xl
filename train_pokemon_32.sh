@@ -29,10 +29,10 @@ python train.py \
 --data=$processed_archive_path \
 --outdir=./training-runs/pokemon32/ \
 --cfg=stylegan3-t \
---gpus=1 \
---batch=8 \
+--gpus=8 \
+--batch=128 \
 --mirror=True \
 --snap=10 \
---batch-gpu=8 \
---kimg=100 \
+--batch-gpu=16 \
+--kimg=1000 \
 --syn_layers=10
