@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo apt-get install unzip
 mkdir ./data
 
 dataset_archive_path=./data/few-shot-image-datasets.zip
