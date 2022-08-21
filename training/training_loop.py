@@ -140,7 +140,8 @@ def training_loop(
     torch.backends.cudnn.benchmark = cudnn_benchmark    # Improves training speed.
     torch.backends.cuda.matmul.allow_tf32 = False       # Improves numerical accuracy.
     torch.backends.cudnn.allow_tf32 = False             # Improves numerical accuracy.
-    conv2d_gradfix.enabled = True                       # Improves training speed.
+    # TODO(nick): Refactor conv2d_gradfix to use new consolidated ops. In the meantime disable.
+    conv2d_gradfix.enabled = False                       # Improves training speed.
     grid_sample_gradfix.enabled = True                  # Avoids errors with the augmentation pipe.
     __RESTART__ = torch.tensor(0., device=device)       # will be broadcasted to exit loop
     __CUR_NIMG__ = torch.tensor(resume_kimg * 1000, dtype=torch.long, device=device)

@@ -168,6 +168,9 @@ def _conv2d_gradfix(transpose, weight_shape, stride, padding, output_padding, di
                 return c.contiguous(memory_format=(torch.channels_last if input.stride(1) == 1 else torch.contiguous_format))
 
             # General case => cuDNN.
+            # TODO(nick): This is currently broken because these ops no longer exist. They were consolidated into
+            # aten::convolution_backward. The params are slightly different (and transpose is now a param), so for now I am disabling
+            # this until I can find time to update to the new op.
             name = 'aten::cudnn_convolution_transpose_backward_weight' if transpose else 'aten::cudnn_convolution_backward_weight'
             flags = [torch.backends.cudnn.benchmark, torch.backends.cudnn.deterministic, torch.backends.cudnn.allow_tf32]
             return torch._C._jit_get_operation(name)(weight_shape, grad_output, input, padding, stride, dilation, groups, *flags)

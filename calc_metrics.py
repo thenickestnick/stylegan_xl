@@ -49,7 +49,8 @@ def subprocess_fn(rank, args, temp_dir):
     device = torch.device('cuda', rank)
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
-    conv2d_gradfix.enabled = True
+    # TODO(nick): Refactor conv2d_gradfix to use new consolidated ops. In the meantime, disable.
+    conv2d_gradfix.enabled = False
 
     # Print network summary.
     G = copy.deepcopy(args.G).eval().requires_grad_(False).to(device)
